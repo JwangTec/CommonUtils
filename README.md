@@ -4,7 +4,7 @@
 
 ### CookieUtils
 
-Cookie值获取与处理
+[Cookie值获取与处理](https://github.com/learn666-gif/CommonUtils/blob/master/java/CookieUtils.java)
 
 #### 类方法
 
@@ -17,7 +17,7 @@ Cookie值获取与处理
 
 ### IdWorker
 
-RabbitMQ工作队列或者竞争消费者模式--work消息模型使用
+[RabbitMQ工作队列或者竞争消费者模式--work消息模型使用](https://github.com/learn666-gif/CommonUtils/blob/master/java/IdWorker.java)
 
 #### 描述：分布式自增长ID
 
@@ -38,7 +38,7 @@ RabbitMQ工作队列或者竞争消费者模式--work消息模型使用
 
 ### JsonUtils
 
-json数据处理方案
+[json数据处理方案](https://github.com/learn666-gif/CommonUtils/blob/master/java/JsonUtils.java)
 
 #### 类方法
 
@@ -47,7 +47,7 @@ json数据处理方案
 
 ### NumberUtils
 
-数值处理
+[数值处理](https://github.com/learn666-gif/CommonUtils/blob/master/java/NumberUtils.java)
 
 
-## webpack相关工具类(各种通用属性定义)
+## [webpack相关工具类(各种通用属性定义)](https://github.com/learn666-gif/CommonUtils/blob/master/web/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%94%A8%E6%B3%95%E6%8C%87%E5%8D%97.md)
