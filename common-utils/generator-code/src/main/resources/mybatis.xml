@@ -1,0 +1,19 @@
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="STDOUT_LOGGING" />
+	</settings>
+
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!--当pageSize为0时查询全部的分页-->
+			<property name="pageSizeZero" value="true"/>
+			<!--pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页-->
+			<property name="reasonable" value="true"/>
+			<!--支持通过 Mapper 接口参数来传递分页参数-->
+			<property name="supportMethodsArguments" value="true"/>
+		</plugin>
+	</plugins>
+</configuration>

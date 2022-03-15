@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sssk.cloud.activity.service.mapper.ActivityPropRuleMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, spread_id, shop_id, prop_name, consume_get_prop, deduction_money, deleted, create_time, update_time
+    </sql>
+
+</mapper>

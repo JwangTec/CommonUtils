@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sssk.cloud.activity.service.mapper.ActivityCouponMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        activity_ticket_id, coupon_name, spread_id, shop_id, receive_method, ticket_money, full_price, type, status, start_time, dead_time, reset_able, need_receive, limit_num, user_group, limit_method, limit_type, deleted, create_time, update_time
+    </sql>
+
+</mapper>

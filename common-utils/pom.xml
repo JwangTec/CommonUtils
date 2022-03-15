@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wang.parent</groupId>
+    <artifactId>common-utils</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>generator-code</module>
+        <module>data-utils</module>
+        <module>rocket-mq</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.3.2.RELEASE</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>2.3.2.RELEASE</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.resources.overwrite>true</maven.resources.overwrite>
+        <lombok.version>1.18.10</lombok.version>
+        <springboot.maven.plugin.version>2.3.2.RELEASE</springboot.maven.plugin.version>
+        <redis.service.version>1.0.0</redis.service.version>
+        <swagger.version>2.8.0</swagger.version>
+        <modelmapper.version>2.3.3</modelmapper.version>
+        <joda.time.vserion>2.10.5</joda.time.vserion>
+        <rsr.util>1.0.5-Alpha</rsr.util>
+        <jackson.version>2.10.0</jackson.version>
+        <javax.validation>2.0.1.Final</javax.validation>
+        <mybatisplus.version>3.2.0</mybatisplus.version>
+        <common.version>1.0.0</common.version>
+        <alipay.version>3.3.49.ALL</alipay.version>
+        <trans.business.version>1.0.0</trans.business.version>
+        <mongodb.version>1.0.0</mongodb.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.6.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <profiles>
+        <profile>
+            <id>jdk_18</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${springboot.maven.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <target>1.8</target>
+                    <source>1.8</source>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <!--打包时先排除掉三个文件夹-->
+                <excludes>
+                    <exclude>dev/*</exclude>
+                    <exclude>prod/*</exclude>
+                    <exclude>test/*</exclude>
+                    <exclude>new_test/*</exclude>
+                </excludes>
+                <includes>
+                    <!--如果有其他定义通用文件，需要包含进来-->
+                    <!--<include>messages/*</include>-->
+                </includes>
+            </resource>
+            <resource>
+                <!--增加mybatis xml文件-->
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <!--这里是关键！ 根据不同的环境，把对应文件夹里的配置文件打包-->
+                <directory>src/main/resources/${profiles.active}</directory>
+            </resource>
+        </resources>
+    </build>
+</project>

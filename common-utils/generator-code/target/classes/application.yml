@@ -1,0 +1,54 @@
+spring:
+  datasource:
+    url:  jdbc:mysql://localhost:3306/dts-shop?allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false&useUnicode=true&characterEncoding=utf8&nullNamePatternMatchesAll=true&serverTimezone=Asia/Shanghai
+    name: generator
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 12345678
+    tomcat:
+      init-s-q-l: SET NAMES utf8mb4 COLLATE utf8mb4_general_ci
+    druid:
+      initial-size: 5 #初始化大小
+      min-idle: 5 #最小
+      max-active: 20 #最大活跃数
+      max-wait: 60000 # 配置获取连接等待超时的时间，单位是毫秒
+      time-between-eviction-runs-millis: 60000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 30000 #配置一个连接在池中最小生存的时间，单位是毫秒
+      max-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-on-borrow: false # 当从连接池借用连接时，是否测试该连接
+      test-while-idle: true # 当连接空闲时，是否执行连接测试
+      test-on-return: false # 在连接归还到连接池时是否测试该连接
+      pool-prepared-statements: true # 打开PSCache，并且指定每个连接上PSCache的大小
+      max-pool-prepared-statement-per-connection-size: 20
+      max-open-prepared-statements: 20
+      filters: stat,wall,slf4j,config #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙，slf4j（用log4j需要额外导入依赖，版本不同，这里也可以去掉slf4j）
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=200;druid.stat.logSlowSql=true;config.decrypt=false # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      #配置监控服务器
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: druid
+        login-password: druid
+  application:
+    name: generator
+
+#进行数据库state逻辑删除配置
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 0  # 逻辑已删除值(默认为 0)
+      logic-not-delete-value: 1 # 逻辑未删除值(默认为 1)
+  mapper-locations: classpath:com/wang/demo/com/wang/mapper/xml/*.xml
+
+server:
+  port: 9000
+
+logging:
+  level:
+    org.springframework.boot.autoconfigure: ERROR
+
+
+

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: boot-order-service
+
+server:
+  port: 8802
+
+rocketmq:
+  producer:
+    groupName: ${spring.application.name}
+    namesrvAddr: 47.113.116.204:9876
+    default: false
+
+

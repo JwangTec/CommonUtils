@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sssk.cloud.activity.service.mapper.ActivityMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, spread_id, shop_id, activity_type, participation_mode, time_limit, start_time, end_time, activity_name, user_group, limited, limit_type, limit_num, reset_able, limit_method, deleted, mutex_id, mutex_type, create_time, update_time
+    </sql>
+
+</mapper>
